@@ -1,12 +1,5 @@
-import * as React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React from 'react';
 
-export const LoginContainer = () => (
-  <>
-    <Helmet>
-      <title>Login</title>
-      <meta name="description" content="Login" />
-    </Helmet>
-    <span>comming soon</span>
-  </>
-);
+import LoginComponent from 'components/Login';
+
+export const LoginContainer = () => <LoginComponent />;
