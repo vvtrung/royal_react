@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { useField } from 'formik';
+
+import FormError from './FormError';
 
 const FormGroup = styled.div``;
 
@@ -16,22 +19,19 @@ interface InputProps {
   [key: string]: any;
 }
 
-const InputField = ({
-  type,
-  name,
-  placeholder,
-  className,
-  ...rest
-}: InputProps) => (
-  <FormGroup className="form-group">
-    <Input
-      className={className}
-      type={type}
-      name={name}
-      placeholder={placeholder || ''}
-      {...rest}
-    />
-  </FormGroup>
-);
+const InputField = ({ type, name, placeholder, className }: InputProps) => {
+  const [field, { touched, error }] = useField(name);
+  return (
+    <FormGroup className="form-group">
+      <Input
+        className={className}
+        type={type}
+        placeholder={placeholder || ''}
+        {...field}
+      />
+      <FormError touched={touched} error={error} />
+    </FormGroup>
+  );
+};
 
-export default InputField;
+export default React.memo(InputField);

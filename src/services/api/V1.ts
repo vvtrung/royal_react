@@ -5,13 +5,11 @@ import axios, {
   AxiosResponse,
 } from 'axios';
 
-import { LocalStorage } from '../LocalStorage';
-import { history } from '../../utils/history';
-
-const TOKEN_KEY = 'accessToken';
+import { history } from 'utils/history';
+import { LocalStorage, TOKEN_KEY } from '../LocalStorage';
 
 const DEFAULT_API_CONFIG: AxiosRequestConfig = {
-  baseURL: '/api/v1',
+  baseURL: `${process.env.REACT_APP_BASE_API}`,
   timeout: 30000,
 };
 
@@ -59,7 +57,7 @@ export default class V1 {
             message: ERROR_MESSAGES.uncaught,
           });
         }
-        if (error.response) this.logoutIfUnauthenticated(error);
+        this.logoutIfUnauthenticated(error);
 
         throw error.response.data;
       },
@@ -67,7 +65,10 @@ export default class V1 {
   }
 
   private logoutIfUnauthenticated(error: AxiosError) {
-    if (error.response.status === ERROR_CODES.unauthenticated) {
+    if (
+      error.response &&
+      error.response.status === ERROR_CODES.unauthenticated
+    ) {
       this.localStorage.remove(TOKEN_KEY);
       history.replace('/login');
     }

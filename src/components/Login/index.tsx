@@ -9,10 +9,14 @@ import {
   H6,
   ButtonIcon,
   InputField,
-  ButtonLink,
+  ButtonForm,
 } from '../common';
 
-const LoginComponent = () => (
+interface Props {
+  submitForm: () => Promise<void>;
+}
+
+const LoginComponent = ({ submitForm }: Props) => (
   <>
     <Helmet>
       <title>Login</title>
@@ -27,19 +31,21 @@ const LoginComponent = () => (
                 <BrandLogo />
                 <H4>Hello! let's get started</H4>
                 <H6 className="font-weight-light">Sign in to continue.</H6>
-                <form className="pt-3">
+                <div className="pt-3">
                   <InputField
-                    type="email"
+                    name="username"
+                    type="text"
                     className="form-control form-control-lg"
                     placeholder="Username"
                   />
                   <InputField
+                    name="password"
                     type="password"
                     className="form-control form-control-lg"
                     placeholder="Password"
                   />
-                  <ButtonLink
-                    link="/"
+                  <ButtonForm
+                    onClick={submitForm}
                     title="SIGN IN"
                     className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
                   />
@@ -54,7 +60,7 @@ const LoginComponent = () => (
                   <div className="text-center mt-4 font-weight-light">
                     Don't have an account? <Link href="/register">Create</Link>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
@@ -64,4 +70,4 @@ const LoginComponent = () => (
   </>
 );
 
-export default LoginComponent;
+export default React.memo(LoginComponent);

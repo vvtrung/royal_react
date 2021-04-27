@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 
 import { P } from './P';
 
-export const NotFoundPage = () => (
+const NotFoundPage = () => (
   <>
     <Helmet>
       <title>404 Page Not Found</title>
@@ -22,6 +22,8 @@ export const NotFoundPage = () => (
     </Wrapper>
   </>
 );
+
+export default NotFoundPage;
 
 const Wrapper = styled.div`
   height: 100vh;
