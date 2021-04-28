@@ -4,7 +4,7 @@ import { LoginApi } from './LoginApi';
 import { login } from './actions';
 import { history } from 'utils/history';
 import { LocalStorage, TOKEN_KEY } from 'services/LocalStorage';
-import { ActionType } from 'types/Action';
+import { ActionType } from 'types';
 
 function* loginSaga(action: ActionType) {
   const {
