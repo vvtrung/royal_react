@@ -2,8 +2,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 
-import { createReducer } from './reducers';
 import rootSagas from './sagas';
+import rootReducer from './reducers';
 
 export const configureStore = (initialState = {}, history) => {
   let composeEnhancers = compose;
@@ -22,8 +22,6 @@ export const configureStore = (initialState = {}, history) => {
   const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   const enhancers = [applyMiddleware(...middlewares)];
-
-  const rootReducer = createReducer();
 
   const store: any = createStore(
     rootReducer,

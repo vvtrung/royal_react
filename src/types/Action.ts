@@ -10,6 +10,7 @@ export type MetaType = {
 export type ActionPayloadType = {
   values: ObjectLiteral;
   meta: MetaType;
+  [key: string]: any;
 };
 
 export interface ActionType {

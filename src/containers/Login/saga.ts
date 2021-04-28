@@ -1,10 +1,11 @@
 import { takeLatest, all, call } from 'redux-saga/effects';
 
-import { LoginApi } from './LoginApi';
-import { login } from './actions';
 import { history } from 'utils/history';
 import { LocalStorage, TOKEN_KEY } from 'services/LocalStorage';
 import { ActionType } from 'types';
+
+import { LoginApi } from './LoginApi';
+import { login } from './actions';
 
 function* loginSaga(action: ActionType) {
   const {
@@ -12,9 +13,12 @@ function* loginSaga(action: ActionType) {
     meta: { setErrors },
   } = action.payload;
   try {
-    const response = yield call([LoginApi, LoginApi.login], values);
+    const { data: { token } = {} as any } = yield call(
+      [LoginApi, LoginApi.login],
+      values,
+    );
     const localStorage = new LocalStorage();
-    localStorage.add(TOKEN_KEY, response.token);
+    localStorage.add(TOKEN_KEY, token);
     history.replace('/users');
   } catch (errors) {
     setErrors({ api: errors.message });
