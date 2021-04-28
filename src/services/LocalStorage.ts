@@ -51,3 +51,8 @@ export class LocalStorage {
     }
   }
 }
+
+export const isAuthenticate = () => {
+  const localStorage = new LocalStorage();
+  return !!localStorage.get(TOKEN_KEY);
+};

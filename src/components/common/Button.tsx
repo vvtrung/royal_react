@@ -5,10 +5,9 @@ import Link from './Link';
 
 const Wrapper = styled.div``;
 
-const Button = styled.button``;
-
 const Icon = styled.i``;
 
+export const Button = styled.button``;
 interface ButtonIconProps {
   icon: string;
   title?: string;
