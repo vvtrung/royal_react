@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { LogoApp } from '../../styles/images/images';
+import { LogoApp } from 'styles/images/images';
 
 const BrandWraper = styled.div.attrs(() => ({
   className: 'brand-logo',

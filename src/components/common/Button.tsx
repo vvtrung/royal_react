@@ -25,7 +25,7 @@ export const ButtonIcon = ({ icon, title }: ButtonIconProps) => (
 );
 
 interface ButtonLinkProps {
-  link: string;
+  link?: string;
   title?: string;
   onClick?: () => void;
   [key: string]: any;
@@ -38,8 +38,22 @@ export const ButtonLink = ({
   ...rest
 }: ButtonLinkProps) => (
   <Wrapper onClick={onClick} className="mt-3">
-    <Link href={link} {...rest}>
+    <Link href={link || '#'} {...rest}>
       {title}
     </Link>
+  </Wrapper>
+);
+
+interface ButtonFormProps {
+  title?: string;
+  onClick?: () => void;
+  [key: string]: any;
+}
+
+export const ButtonForm = ({ title, onClick, ...rest }: ButtonFormProps) => (
+  <Wrapper className="mt-3">
+    <Button onClick={onClick} {...rest}>
+      {title}
+    </Button>
   </Wrapper>
 );

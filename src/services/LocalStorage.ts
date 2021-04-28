@@ -13,6 +13,8 @@ export class StorageItem {
   }
 }
 
+export const TOKEN_KEY = 'accessToken';
+
 export class LocalStorage {
   localStorageSupported: boolean;
 
@@ -28,9 +30,9 @@ export class LocalStorage {
     }
   }
 
-  get(key: string): string {
+  get(key: string): string | null {
     if (this.localStorageSupported) {
-      var item = localStorage.getItem(key);
+      const item = localStorage.getItem(key);
       return item;
     } else {
       return null;
