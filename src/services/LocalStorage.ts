@@ -32,8 +32,7 @@ export class LocalStorage {
 
   get(key: string): string | null {
     if (this.localStorageSupported) {
-      const item = localStorage.getItem(key);
-      return item;
+      return localStorage.getItem(key);
     } else {
       return null;
     }
