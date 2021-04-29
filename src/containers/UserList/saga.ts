@@ -3,7 +3,7 @@ import { takeLatest, all, call, put } from 'redux-saga/effects';
 import { UserApi } from './UserApi';
 import { getUsers, saveUsers } from './actions';
 
-function* getUsersSaga() {
+export function* getUsersSaga() {
   try {
     const response = yield call([UserApi, UserApi.getUsers]);
     yield put(saveUsers(response.data));

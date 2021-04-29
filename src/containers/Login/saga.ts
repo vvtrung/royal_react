@@ -7,7 +7,7 @@ import { ActionType } from 'types';
 import { LoginApi } from './LoginApi';
 import { login } from './actions';
 
-function* loginSaga(action: ActionType) {
+export function* loginSaga(action: ActionType) {
   const {
     values,
     meta: { setErrors },
