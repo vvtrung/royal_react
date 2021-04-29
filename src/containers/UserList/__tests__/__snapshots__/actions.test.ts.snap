@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Actions should create getUsers action 1`] = `
+Object {
+  "type": "GET_USERS",
+}
+`;
+
+exports[`User Actions should create saveUsers action 1`] = `
+Object {
+  "payload": Object {
+    "users": Array [
+      Object {
+        "avatar": "avatar",
+        "email": "email@gmail.com",
+        "id": "1",
+        "name": "name",
+      },
+      Object {
+        "avatar": "avatar2",
+        "email": "email2@gmail.com",
+        "id": "2",
+        "name": "name2",
+      },
+      Object {
+        "avatar": "avatar3",
+        "email": "email3@gmail.com",
+        "id": "3",
+        "name": "name3",
+      },
+    ],
+  },
+  "type": "SAVE_USERS",
+}
+`;

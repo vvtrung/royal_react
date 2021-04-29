@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Actions should create login action 1`] = `
+Object {
+  "payload": Object {
+    "password": "123123qwe",
+    "username": "admin",
+  },
+  "type": "LOGIN",
+}
+`;

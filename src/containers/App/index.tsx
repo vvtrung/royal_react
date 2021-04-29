@@ -5,6 +5,7 @@ import { Switch, Route, Router } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 import { history } from 'utils/history';
 import MainLayout from 'components/Layout/MainLayout';
+import { PrivateRoute } from 'components/common';
 
 import { LoginContainer } from '../Login/Loadable';
 import { NotFoundPage } from '../NotFoundPage/Loadable';
@@ -20,7 +21,7 @@ export const App = () => (
       <Route exact path="/login" component={LoginContainer} />
       <Route>
         <MainLayout>
-          <Route path="/users" component={UserListContainer} />
+          <PrivateRoute path="/users" component={UserListContainer} />
         </MainLayout>
       </Route>
       <Route component={NotFoundPage} />
